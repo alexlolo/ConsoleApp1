@@ -13,8 +13,6 @@ namespace ConsoleApp1
 
         protected double prix { get; set;}
 
-        protected string type { get; set;}
-
         protected int quantité { get; set;}
 
         public article()
@@ -22,54 +20,36 @@ namespace ConsoleApp1
             this.designation = "";
             this.prix = 0;
             this.quantité = 0;
-            this.type = "";
         }
 
-        public article(string designation, double prix, int quantite, string type)
+        public article(string designation, double prix, int quantite)
         {
             this.designation = designation;
             this.prix = prix;
             this.quantité = quantite;
-            this.type = type;
         }
-
-
 
         public void afficher()
         {
-            Console.WriteLine("designation: " + designation + "prix: " +prix +"quantité: "+ quantité+ "type: "+type );
+            Console.WriteLine($"designation:{this.designation} prix: {this.prix} quantité: {this.quantité}");
         }
 
-        public void ajouter(int add)
+        public void ajouter()
         {
-            quantité += add;
+            this.quantité += 1;
         }
 
-        public void modifier(string designation, double prix, int quantite, string type)
-        {
-            this.designation = designation;
-            this.prix = prix;
-            this.quantité = quantite;
-            this.type = type;
-            Console.WriteLine("modification de l'article: " + designation + "prix: " + prix + "quantité: " + quantité + "type: " + type);
-        }
 
-        public void Supprimer(int delete)
+        public void Supprimer()
         {
-            if (quantité - delete > 0)
+            if (this.quantité >= 1)
             {
-                quantité = quantité - delete;
+                this.quantité -= 1;
             }
             else
             {
-                Console.WriteLine("impossible de supprimer plus darticle qu'il y en a, il en reste: " + quantité);    
+                Console.WriteLine("Plus aucune quantité n'est disponible.");
             }
-        }
-
-        public  void acheter() { 
-            
-            Console.WriteLine("achat "); 
-        
         }
     }
 

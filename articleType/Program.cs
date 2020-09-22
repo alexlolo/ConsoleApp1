@@ -1,27 +1,21 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Globalization;
 
-namespace ConsoleApp1
+namespace ArticleType
 {
     class Program
     {
         static void Main(string[] args)
         {
-           
-
-            article article1 = new article("pomme", 5, 10);
+            Article article1 = new Article("pomme", 5, 10, TypeArticleEnum.Alimentaire);
             article1.afficher();
-        
 
-            article article2 = new article("television", 500, 2);
+            Article article2 = new Article("television", 500, 2, TypeArticleEnum.Alimentaire);
             article2.afficher();
 
             article1.ajouter();
             article2.Supprimer();
             article1.afficher();
             article2.afficher();
-
 
             Console.WriteLine("[Creation d'un article]");
 
@@ -39,8 +33,17 @@ namespace ConsoleApp1
             Console.WriteLine("Quantité de l'article");
             int quantiteNewArticle = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Type : ");
+
+            Console.WriteLine("1. Alimentaire ");
+            Console.WriteLine("2. Droguerie");
+            Console.WriteLine("3. Habillement");
+            Console.WriteLine("4. Loisir : ");
+
+            TypeArticleEnum typeNewArticle = (TypeArticleEnum)(Convert.ToInt32(Console.ReadLine()) - 1);
+
             Console.WriteLine(Environment.NewLine);
-            article newArticle = new article(nomNewArticle, prixNewArticle, quantiteNewArticle);
+            Article newArticle = new Article(nomNewArticle, prixNewArticle, quantiteNewArticle, typeNewArticle);
 
             newArticle.afficher();
 
